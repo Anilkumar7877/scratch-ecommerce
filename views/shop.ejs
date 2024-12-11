@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <div class="flex w-screen">
+        <div class="options w-1/4">
+
+        </div>
+        <div class="products w-3/4 py-20 flex flex-wrap gap-8">
+            <% products.forEach(function(product){ %>
+                <div  class="w-52 h-60">
+                    <div class="bg-[product.bgcolor] w-full h-4/5 p-1">
+                        <img class="w-full h-full object-cover"
+                            src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
+                    </div>
+                    <div class="bg-red-500 w-full h-1/5 flex justify-between px-2">
+                        <div class="w-full">
+                            <h3 class="font-semibold max-w-28 h-1/2 truncate"><%= product.name %></h3>
+                            <p><%= product.price %></p>
+                        </div>
+                        <div class="w-fit flex justify-center items-center">
+                            <button class="bg-white px-4 py-1 flex justify-center items-center rounded-full">
+                                <a href="/addtocart/<%= product._id %>">
+                                    Add
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>

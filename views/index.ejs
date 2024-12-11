@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <% if(error.length>0){ %>
+        <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-red-500">
+            <span class="inline-block mt-1 mb-1 text-white">
+                <%= error %>
+            </span>
+        </div>
+    <% } %>
+    <%- include('partials/header') %>
+    <div class="flex justify-center h-screen w-screen">
+        <div class="createaccount w-1/2 justify-center flex flex-col items-center">
+            <div class="w-1/2 flex justify-start text-4xl">Welcome to Scatch</div>
+            <div class="w-1/2 flex justify-start text-xl">create your account</div>
+            <form action="/users/register" method="post" class="flex flex-col gap-2 w-1/2 my-2">
+                <input type="text" name="name" placeholder="Name" class="outline-none bg-gray-100 text-black rounded-md w-full px-4 py-2">
+                <input type="text" name="email" placeholder="Email" class="outline-none bg-gray-100 text-black rounded-md w-full px-4 py-2">
+                <input type="text" name="password" placeholder="Password" class="outline-none bg-gray-100 text-black rounded-md w-full px-4 py-2">
+                <input type="submit" class="bg-blue-500 rounded-full text-white px-4 py-2 w-fit" value="Create My Account">
+            </form>
+        </div>
+        <div class="login w-1/2 justify-center flex flex-col items-center">
+            <div class="w-1/2 flex justify-start text-xl">login your account</div>
+            <form action="/users/login" method="post" class="flex flex-col gap-2 w-1/2 my-2">
+                <input type="text" name="email" placeholder="Email" class="outline-none bg-gray-100 text-black rounded-md w-full px-4 py-2">
+                <input type="text" name="password" placeholder="Password" class="outline-none bg-gray-100 text-black rounded-md w-full px-4 py-2">
+                <input type="submit" class="bg-blue-500 rounded-full text-white px-4 py-2 w-fit" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
